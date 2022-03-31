@@ -1,6 +1,7 @@
 package ru.andrewrosso.springmvcrest.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,6 +33,7 @@ public class CourseController {
         return "courses/list";
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable("id") int id, Model model) {
         courseService.delete(id);
@@ -49,6 +51,7 @@ public class CourseController {
         return "courses/updateForm";
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public String update(@ModelAttribute("course") @Valid Course course,
                          BindingResult bindingResult) {
