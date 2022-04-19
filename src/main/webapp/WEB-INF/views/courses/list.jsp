@@ -16,7 +16,7 @@
 <body>
 <div class="container">
     <div class="col-md-offset-1 col-md-10">
-    <h1>CПЕЦИАЛИСТ.РУ</h1>
+    <h1>IT-COUSRSES.RU</h1>
         <div id="userinfo">
             <s:authorize access="isAuthenticated()">Привет,
                 <s:authentication property="principal.username" />!
@@ -46,7 +46,7 @@
                 <td>Название</td>
                 <td>Длительность</td>
                 <td>Описание</td>
-                <s:authorize access="hasRole('ROLE_USER')">
+                <s:authorize access="hasRole('ROLE_ADMIN')">
                     <td></td>
                     <td></td>
                 </s:authorize>
@@ -56,7 +56,7 @@
                     <td>${course.title}</td>
                     <td>${course.length}</td>
                     <td>${course.description}</td>
-                    <s:authorize access="hasRole('ROLE_USER')">
+                    <s:authorize access="hasRole('ROLE_ADMIN')">
                         <td><a href="courses/update/${course.id}">Изменить</a> </td>
                         <td><a href="courses/delete/${course.id}">Удалить</a> </td>
                     </s:authorize>
@@ -64,7 +64,7 @@
             </c:forEach>
         </table>
     </c:if>
-            <s:authorize access="hasRole('ROLE_USER')">
+            <s:authorize access="hasRole('ROLE_ADMIN')">
             <a href="courses/update/0">Добавить...</a>
             </s:authorize>
         </div>

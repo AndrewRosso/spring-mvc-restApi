@@ -33,7 +33,7 @@ public class CourseController {
         return "courses/list";
     }
 
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable("id") int id, Model model) {
         courseService.delete(id);
@@ -51,13 +51,12 @@ public class CourseController {
         return "courses/updateForm";
     }
 
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public String update(@ModelAttribute("course") @Valid Course course,
                          BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()){
-//            model.addAttribute("course", course);
             return "courses/updateForm";
         }
         courseService.save(course);

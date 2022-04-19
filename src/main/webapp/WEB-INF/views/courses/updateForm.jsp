@@ -13,8 +13,6 @@
 
         form fieldset label {
             display: block;
-            /*width : 50%;
-            float :left;*/
         }
 
         form fieldset input, form fieldset textarea {
@@ -23,7 +21,7 @@
     </style>
     <script>
         var disableForm = true;
-        <s:authorize access="hasRole('ROLE_USER')">
+        <s:authorize access="hasRole('ROLE_ADMIN')">
             disableForm = false;
         </s:authorize>
 

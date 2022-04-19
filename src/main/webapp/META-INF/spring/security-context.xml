@@ -17,7 +17,7 @@
     <s:authentication-manager>
     	<s:authentication-provider>
     		<s:user-service>
-    			<s:user name="user" password="user" authorities="ROLE_USER"/>
+    			<s:user name="admin" password="admin" authorities="ROLE_ADMIN"/>
     		</s:user-service>
     	</s:authentication-provider>
     </s:authentication-manager>
